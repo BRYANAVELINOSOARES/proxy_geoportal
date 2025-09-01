@@ -1,0 +1,27 @@
+   <!DOCTYPE html>
+   <html lang="pt-BR">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Proxy WMS</title>
+   </head>
+   <body>
+       <script>
+           const url = "https://geo.sema.mt.gov.br/geoserver/ows?authkey=541085de-9a2e-454e-bdba-eb3d57a2f492";
+
+           fetch(url)
+               .then(response => {
+                   if (!response.ok) {
+                       throw new Error('Network response was not ok');
+                   }
+                   return response.text();
+               })
+               .then(data => {
+                   document.write(data);
+               })
+               .catch(error => {
+                   console.error('Houve um problema com a requisição:', error);
+               });
+       </script>
+   </body>
+   </html>
